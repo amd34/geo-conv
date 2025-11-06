@@ -32,13 +32,12 @@ jobs:
       - name: setting_env_vars
         id:  env_vars
         shell: bash
+        run: |
+          echo "GOOS=linux" >> "$GITHUB_OUTPUT"
+          echo "GOARCH=amd64" >> "$GITHUB_OUTPUT"
       - if: ${{ inputs.os }} == 'windows'
         run: |
           echo "GOOS=windows" >> "$GITHUB_OUTPUT"
-          echo "GOARCH=amd64" >> "$GITHUB_OUTPUT"
-      - if: ${{ inputs.os }} == 'linux'
-        run: |
-          echo "GOOS=linux" >> "$GITHUB_OUTPUT"
           echo "GOARCH=amd64" >> "$GITHUB_OUTPUT"
 
   build-_-release:
