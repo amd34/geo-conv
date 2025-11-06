@@ -58,7 +58,7 @@ jobs:
     - name: Build
       run: |
         sudo apt update
-        sudo apt install -y libx11-dev libxkbfile-dev x11-utils  libxcomposite-dev libxdamage-dev libxrender-dev
+        sudo apt install -y libx11-dev libxkbfile-dev x11-utils  libxcomposite-dev libxdamage-dev libxrender-dev libxcursor-dev
         go mod init geo-conv
         go mod tidy
         GOOS=${{ env.GOOS }} GOARCH=${{ env.GOARCH }} go build -v ./...
