@@ -58,7 +58,7 @@ jobs:
     - name: Build
       run: |
         sudo apt update
-        sudo apt install -y libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev
+        sudo apt install -y libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev libmesa-dev mesa-common-dev libglu1-mesa-dev freeglut3-dev
         go mod init geo-conv
         go mod tidy
         GOOS=${{ env.GOOS }} GOARCH=${{ env.GOARCH }} go build -v ./...
