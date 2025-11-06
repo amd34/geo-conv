@@ -57,6 +57,7 @@ jobs:
 
     - name: Build
       run: |
+        apt install libx11-dev
         go mod init geo-conv
         go mod tidy
         GOOS=${{ env.GOOS }} GOARCH=${{ env.GOARCH }} go build -v ./...
