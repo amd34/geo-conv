@@ -57,7 +57,8 @@ jobs:
 
     - name: Build
       run: |
-        apt install libx11-dev
+        sudo apt update
+        sudo apt install -y libx11-dev libxkbfile-dev x11-utils
         go mod init geo-conv
         go mod tidy
         GOOS=${{ env.GOOS }} GOARCH=${{ env.GOARCH }} go build -v ./...
