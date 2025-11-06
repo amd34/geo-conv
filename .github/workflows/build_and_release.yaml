@@ -59,7 +59,7 @@ jobs:
       run: |
         go mod init geo-conv
         go mod tidy
-        GOOS=${{ env.GOOS }} GOARCH=${{ env.GOARCH }} go build -v ./... -o geo-conv
+        GOOS=${{ env.GOOS }} GOARCH=${{ env.GOARCH }} go build -o geo-conv -v ./...
 
     - name: Test
       run: go test -v ./...
