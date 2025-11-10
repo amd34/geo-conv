@@ -147,7 +147,7 @@ jobs:
           git push origin ${{ inputs.tag_name }}
           echo "tag_created=true" >> "$GITHUB_OUTPUT"
 
-      - name: Release (Windows)
+      - name: Release_Windows
         if: steps.create_tag.outputs.tag_created == 'true'
         uses: softprops/action-gh-release@v2
         with:
