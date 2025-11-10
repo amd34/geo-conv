@@ -58,7 +58,17 @@ jobs:
     - name: Build
       run: |
         sudo apt update
-        sudo apt install -y libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev mesa-common-dev libglu1-mesa-dev freeglut3-dev libfl-dev libc6-dev
+        sudo apt install -y \
+          libxcursor-dev \
+          libxrandr-dev \
+          libxinerama-dev \
+          libxi-dev \
+          libxxf86vm-dev \
+          mesa-common-dev \
+          libglu1-mesa-dev \
+          freeglut3-dev \
+          libfl-dev \
+          libc6-dev
         go mod init geo-conv
         go mod tidy
         go get ./...
