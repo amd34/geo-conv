@@ -64,7 +64,7 @@ jobs:
           libfl-dev libc6-dev
           
     - name: Install Windows dependencies
-      if: env.GOOS == 'linux'
+      if: env.GOOS == 'windows'
       run: |
           sudo apt update
           sudo apt install -y mingw-w64
