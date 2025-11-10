@@ -69,6 +69,7 @@ jobs:
         export GOARCH=${{ env.GOARCH }}
         go mod init geo-conv
         go mod tidy
+        go get ./...
         if [ "${{ env.GOOS }}" = "windows" ]; then
           go build -v -o geo-conv.exe .
         else
