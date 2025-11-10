@@ -66,18 +66,16 @@ jobs:
     - name: Install Windows dependencies
       if: env.GOOS == 'windows'
       run: |
-          sudo apt update
-          sudo apt install -y mingw-w64
-          export CC=x86_64-w64-mingw32-gcc
-          export CXX=x86_64-w64-mingw32-g++
-          export CGO_ENABLED=1
-          export GOOS=windows
-          export GOARCH=amd64
+        sudo apt update
+        sudo apt install -y mingw-w64
+        export CGO_ENABLED=1
+        export CC=x86_64-w64-mingw32-gcc
+        export CXX=x86_64-w64-mingw32-g++
+        export GOOS=windows
+        export GOARCH=amd64
 
     - name: Build
       run: |
-        export GOOS=${{ env.GOOS }}
-        export GOARCH=${{ env.GOARCH }}
         go mod init geo-conv
         go mod tidy
         go get ./...
