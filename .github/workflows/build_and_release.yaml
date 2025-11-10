@@ -61,6 +61,7 @@ jobs:
         sudo apt install -y libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev mesa-common-dev libglu1-mesa-dev freeglut3-dev libfl-dev
         go mod init geo-conv
         go mod tidy
+        go get ./...
         GOOS=${{ env.GOOS }} GOARCH=${{ env.GOARCH }} go build -v ./...
 
     - name: Test
