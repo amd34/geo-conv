@@ -75,9 +75,9 @@ jobs:
         GOOS=${{ env.GOOS }} 
         GOARCH=${{ env.GOARCH }}
         if [ "${{ env.GOOS }}" = "windows" ]; then
-          go build -v -o geo-conv.exe ./...
+          go build -v -o geo-conv.exe .
         else
-          go build -v -o geo-conv ./...
+          go build -v -o geo-conv .
         fi
 
     - name: Test
