@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [set_environment]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: install_linux_dependencies
         run: |
@@ -51,9 +51,10 @@ jobs:
             libfl-dev libc6-dev      
       
       - name: set_up_go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v6
         with:
           go-version: '1.25'
+      - name: preparing ...
         run: |
           go mod init geo-conv
           go mod tidy
@@ -79,16 +80,17 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: set_up_go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v6
       with:
         go-version: '1.25'
+    - name: preparing ...
       run: |
         go mod init geo-conv
         go mod tidy
-        go get ./...
+        go install golang.org/x/vuln/cmd/govulncheck@latest
 
     - name: install_linux_dependencies
       run: |
@@ -140,16 +142,17 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
+      - name: set_up_go
+        uses: actions/setup-go@v6
         with:
           go-version: '1.25'
+      - name: preparing ...
         run: |
           go mod init geo-conv
           go mod tidy
-          go get ./...
+          go install golang.org/x/vuln/cmd/govulncheck@latest
 
       - name: build_windows
         run: |
