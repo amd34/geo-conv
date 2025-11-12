@@ -38,6 +38,7 @@ jobs:
           
   vulnerability_detection:
     runs-on: ubuntu-latest
+    needs: [set_environment]
     steps:
       - uses: actions/checkout@v4
       
@@ -48,6 +49,8 @@ jobs:
           
       - name: scanning
         run: |
+          go mod init geo-conv
+          go mod tidy
           go install golang.org/x/vuln/cmd/govulncheck@latest
           govulncheck ./...
           
@@ -64,6 +67,8 @@ jobs:
           
       - name: testing
         run: |
+          go mod init geo-conv
+          go mod tidy
           go test -v ./...
 
   build_and_release_linux:
