@@ -74,8 +74,9 @@ jobs:
           
       - name: scan_report
         run: |
-          echo '### vulnerability report! :unamused:' > $GITHUB_STEP_SUMMARY
-          echo '---' > $GITHUB_STEP_SUMMARY
+          echo "### vulnerability report! :unamused:" > $GITHUB_STEP_SUMMARY
+          echo "\n"
+          echo "---" > $GITHUB_STEP_SUMMARY
           cat /tmp/govulncheck.txt >> $GITHUB_STEP_SUMMARY
                     
   build_and_release_linux:
