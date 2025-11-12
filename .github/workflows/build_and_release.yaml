@@ -41,6 +41,14 @@ jobs:
     needs: [set_environment]
     steps:
       - uses: actions/checkout@v4
+
+      - name: install_linux_dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev \
+            libxxf86vm-dev mesa-common-dev libglu1-mesa-dev freeglut3-dev \
+            libfl-dev libc6-dev      
       
       - name: set_up_go
         uses: actions/setup-go@v4
@@ -53,18 +61,7 @@ jobs:
           go mod tidy
           go install golang.org/x/vuln/cmd/govulncheck@latest
           govulncheck ./...
-          
-  test:
-    runs-on: ubuntu-latest
-    needs: [set_environment,vulnerability_detection]
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: set_up_go
-        uses: actions/setup-go@v4
-        with:
-          go-version: '1.25'
-          
+                    
       - name: testing
         run: |
           go mod init geo-conv
@@ -74,7 +71,7 @@ jobs:
   build_and_release_linux:
     if: ${{ needs.set_environment.outputs.GOOS == 'linux' }}
     runs-on: ubuntu-latest
-    needs: [set_environment,vulnerability_detection,test]
+    needs: [set_environment,vulnerability_detection]
     env:
       GOOS: ${{ needs.set_environment.outputs.GOOS }}
       GOARCH: ${{ needs.set_environment.outputs.GOARCH }}
@@ -135,7 +132,7 @@ jobs:
   build_and_release_windows:
     if: ${{ needs.set_environment.outputs.GOOS == 'windows' }}
     runs-on: windows-latest
-    needs: [set_environment,vulnerability_detection,test]
+    needs: [set_environment,vulnerability_detection]
     env:
       GOOS: ${{ needs.set_environment.outputs.GOOS }}
       GOARCH: ${{ needs.set_environment.outputs.GOARCH }}
