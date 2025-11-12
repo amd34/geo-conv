@@ -69,15 +69,8 @@ jobs:
       - name: scanning
         run: |
           govulncheck -show verbose ./... | tee -a /tmp/govulncheck.txt
-      
-      - name: cache_scan_result
-        uses: actions/cache@v4
-        with:
-          path: |
-            tmp/govulncheck.txt
-          key: ${{ runner.os }}_${{ github.head_ref }}_${{ github.sha }}_'govulncheck.txt'
-          restore-keys: |
-            ${{ runner.os }}_${{ github.head_ref }}_${{ github.sha }}_'govulncheck.txt'
+          echo “### vulnerability report! :unamused:\n” > $GITHUB_STEP_SUMMARY
+          cat /tmp/govulncheck.txt >> $GITHUB_STEP_SUMMARY
                     
   build_and_release_linux:
     if: ${{ needs.set_environment.outputs.GOOS == 'linux' }}
