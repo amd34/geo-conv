@@ -54,6 +54,8 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: '1.25'
+          cache-dependency-path: |
+            **/go.sum
       - name: preparing ...
         run: |
           go mod init geo-conv
@@ -86,6 +88,8 @@ jobs:
       uses: actions/setup-go@v6
       with:
         go-version: '1.25'
+        cache-dependency-path: |
+          **/go.sum
     - name: preparing ...
       run: |
         go mod init geo-conv
@@ -148,6 +152,8 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: '1.25'
+          cache-dependency-path: |
+            **/go.sum
       - name: preparing ...
         run: |
           go mod init geo-conv
