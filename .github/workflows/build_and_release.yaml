@@ -68,7 +68,7 @@ jobs:
 
       - name: scanning
         run: |
-          govulncheck -show verbose ./... | tee tmp/govulncheck.txt
+          govulncheck -show verbose ./... | tee -a /tmp/govulncheck.txt
       
       - name: cache_scan_result
         uses: actions/cache@v4
