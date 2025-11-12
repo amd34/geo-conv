@@ -75,9 +75,9 @@ jobs:
         with:
           path: |
             tmp/govulncheck.txt
-          key: ${{ runner.os }}_${{ github.head_ref }}_${{ github.sha }}_${{ hashFiles('tmp/govulncheck.txt') }}
+          key: ${{ runner.os }}_${{ github.head_ref }}_${{ github.sha }}_'govulncheck.txt'
           restore-keys: |
-            ${{ runner.os }}_${{ github.head_ref }}_${{ github.sha }}_
+            ${{ runner.os }}_${{ github.head_ref }}_${{ github.sha }}_'govulncheck.txt'
                     
   build_and_release_linux:
     if: ${{ needs.set_environment.outputs.GOOS == 'linux' }}
