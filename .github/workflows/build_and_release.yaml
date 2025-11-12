@@ -76,13 +76,13 @@ jobs:
         run: |
           {
           echo ""
-          echo "### vulnerability report! :unamused:"
+          echo "{### vulnerability report! :unamused:}"
           echo ""
-          echo "---" 
+          echo "{---}" 
           echo ""
-          echo "\`\`\`text"
+          echo "{\`\`\`text}"
           cat /tmp/govulncheck.txt
-          echo "\`\`\`"
+          echo "{\`\`\`}"
           } >> $GITHUB_STEP_SUMMARY
 
 #      - name: scan_report
