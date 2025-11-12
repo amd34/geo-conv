@@ -63,8 +63,6 @@ jobs:
 
       - name: scanning
         run: |
-          go mod init geo-conv
-          go mod tidy
           go install golang.org/x/vuln/cmd/govulncheck@latest
           govulncheck ./...
                     
