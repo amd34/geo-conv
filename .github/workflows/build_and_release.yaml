@@ -71,7 +71,7 @@ jobs:
   build_and_release_linux:
     if: ${{ needs.set_environment.outputs.GOOS == 'linux' }}
     runs-on: ubuntu-latest
-    needs: [set_environment,vulnerability_detection]
+    needs: [set_environment,test_and_vulnerability_detection]
     env:
       GOOS: ${{ needs.set_environment.outputs.GOOS }}
       GOARCH: ${{ needs.set_environment.outputs.GOARCH }}
@@ -132,7 +132,7 @@ jobs:
   build_and_release_windows:
     if: ${{ needs.set_environment.outputs.GOOS == 'windows' }}
     runs-on: windows-latest
-    needs: [set_environment,vulnerability_detection]
+    needs: [set_environment,test_and_vulnerability_detection]
     env:
       GOOS: ${{ needs.set_environment.outputs.GOOS }}
       GOARCH: ${{ needs.set_environment.outputs.GOARCH }}
