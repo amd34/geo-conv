@@ -68,7 +68,16 @@ jobs:
 
       - name: scanning
         run: |
-          govulncheck -show verbose ./...
+          govulncheck -show verbose ./... | tee -a tmp/govulncheck.txt
+      
+      - name: cache_scan_result
+        uses: actions/cache@v4
+        with:
+          path: |
+            tmp/govulncheck.txt
+          key: ${{ runner.os }}_${{ github.head_ref }}_${{ github.sha }}_${{ hashFiles('tmp/govulncheck.txt') }}
+          restore-keys: |
+            ${{ runner.os }}_${{ github.head_ref }}_${{ github.sha }}_
                     
   build_and_release_linux:
     if: ${{ needs.set_environment.outputs.GOOS == 'linux' }}
