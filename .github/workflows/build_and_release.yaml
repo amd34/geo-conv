@@ -134,6 +134,7 @@ jobs:
         name: lv_geo-conv
         path: ./geo-conv
         compression-level: 0 # no compression
+        retention-days: 3
 
     - name: validate_tag_format
       id: validate_tag
@@ -196,6 +197,7 @@ jobs:
           name: wv_geo-conv
           path: ./geo-conv.exe
           compression-level: 0 # no compression
+          retention-days: 3
 
       - name: validate_tag_format
         id: validate_tag
