@@ -128,6 +128,12 @@ jobs:
       run: |
         go build -v -o geo-conv .
 
+    - uses: actions/upload-artifact@v4
+      with:
+        name: lv_geo-conv
+        path: ./get-conv
+        compression-level: 0 # no compression
+
     - name: validate_tag_format
       id: validate_tag
       run: |
@@ -182,6 +188,12 @@ jobs:
       - name: build_windows
         run: |
           go build -v -o geo-conv.exe .
+          
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wv_geo-conv
+          path: ./get-conv.exe
+          compression-level: 0 # no compression
 
       - name: validate_tag_format
         id: validate_tag
